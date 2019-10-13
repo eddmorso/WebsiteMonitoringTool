@@ -13,10 +13,10 @@ import java.util.List;
 
 public class MonitoredDataServlet extends HttpServlet {
     private Model model;
-    private final String COULDNT_GET_SIZE_MSG = "Couldn't get page size";
-    private final String UNEXPECTED_TIME_MSG = "Unexpected response time";
-    private final String UNEXPECTED_RESPONSE_CODE_MSG = "Unexpected response code";
-    private final String UNEXPECTED_SIZE = "Unexpected size";
+    private final String COULDNT_GET_SIZE_MSG = "Couldn't get page size;";
+    private final String UNEXPECTED_TIME_MSG = "Unexpected response time;";
+    private final String UNEXPECTED_RESPONSE_CODE_MSG = "Unexpected response code;";
+    private final String UNEXPECTED_SIZE = "Unexpected size;";
 
     public MonitoredDataServlet(){
         model = new Model(new Database());
@@ -57,7 +57,7 @@ public class MonitoredDataServlet extends HttpServlet {
 
             req.setAttribute("gatheredData", gatheredData);
 
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("table.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("monitoringTable.jsp");
             requestDispatcher.forward(req, resp);
         }
     }

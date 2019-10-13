@@ -11,6 +11,16 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>MonitoredDataServlet</servlet-name>
-        <url-pattern>/monitoring</url-pattern>
+        <url-pattern>/monitoringTable</url-pattern>
+
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>InitialDataServlet</servlet-name>
+        <servlet-class>Controller.InitialDataServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitialDataServlet</servlet-name>
+        <url-pattern>/initialDataTable</url-pattern>
     </servlet-mapping>
 </web-app>

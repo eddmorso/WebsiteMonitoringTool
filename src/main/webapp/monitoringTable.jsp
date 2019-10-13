@@ -4,17 +4,15 @@
          pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>MonitoringTable</title>
+    <title>Monitoring Table</title>
 </head>
 <body>
     <%
         response.setIntHeader("Refresh", 5);
     %>
     <table border="1">
-
         <thead>
             <tr>
-                <th>#</th>
                 <th>URL</th>
                 <th>Page Size</th>
                 <th>Response Code</th>
@@ -25,21 +23,19 @@
         </thead>
         <tbody>
             <%
-                int i = 1;
                 List<GatheredData> gatheredData = (List<GatheredData>) request.getAttribute("gatheredData");
             %>
             <%
                 for (GatheredData data : gatheredData){
             %>
-                <tr>
-                    <td><%=i++%></td>
-                    <td><%=data.getUrl()%></td>
-                    <td><%=data.getPageSize()%></td>
-                    <td><%=data.getResponseCode()%>></td>
-                    <td><%=data.getResponseTime()%></td>
-                    <td><%=data.getMonitoringTimeLeft()%></td>
-                    <td><%=data.getStatus()%></td>
-                </tr>
+            <tr>
+                <td><%=data.getUrl()%></td>
+                <td><%=data.getPageSize()%></td>
+                <td><%=data.getResponseCode()%>></td>
+                <td><%=data.getResponseTime()%></td>
+                <td><%=data.getMonitoringTimeLeft()%></td>
+                <td><%=data.getStatus()%></td>
+            </tr>
             <%
                 }
             %>

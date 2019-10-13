@@ -133,7 +133,7 @@ public class Model {
         updateMonitoredURLS();
     }
 
-    public List<MonitoredURL> getMonitoredURLS() {
+    public List<MonitoredURL> getMonitoredUrl() {
         return monitoredURLS;
     }
 
