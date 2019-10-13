@@ -33,6 +33,24 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>RemoverServlet</servlet-name>
+        <servlet-class>Controller.RemoverServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoverServlet</servlet-name>
+        <url-pattern>/remover</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdderServlet</servlet-name>
+        <servlet-class>Controller.AdderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdderServlet</servlet-name>
+        <url-pattern>/adder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>UpdaterServlet</servlet-name>
         <servlet-class>Controller.UpdaterServlet</servlet-class>
     </servlet>

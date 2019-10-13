@@ -1,0 +1,59 @@
+package Controller;
+
+import Model.Data.Database;
+import Model.*;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+public class AdderServlet extends HttpServlet {
+    private Model model;
+
+    public AdderServlet(){
+        model = new Model(new Database());
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String url = req.getParameter("url");
+
+        if (!isExistedUrl(url)) {
+            int maxTime = Integer.valueOf(req.getParameter("maxResponseTime"));
+            int minTime = Integer.valueOf(req.getParameter("minResponseTime"));
+            int monitoringTimeSeconds = Integer.valueOf(req.getParameter("monitoringTimeSeconds"));
+            int responseCode = Integer.valueOf(req.getParameter("responseCode"));
+            int minSize = Integer.valueOf(req.getParameter("minSize"));
+            int maxSize = Integer.valueOf(req.getParameter("maxSize"));
+
+            model.addMonitoredURL(new MonitoredURL(url, minTime, maxTime, monitoringTimeSeconds, responseCode, minSize, maxSize));
+
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("initialDataTable");
+            requestDispatcher.forward(req, resp);
+        } else {
+            resp.getWriter().write(
+                    "<html>" +
+                            "<head></head>" +
+                            "<body>" +
+                                "<script>alert('URL already exists');</script>" +
+                            "</body>" +
+                       "</html>");
+        }
+    }
+
+    public boolean isExistedUrl(String url){
+        List<MonitoredURL> monitoredURLS = model.getMonitoredUrl();
+
+        for (MonitoredURL monitoredURL : monitoredURLS){
+            if (monitoredURL.getUrl().equals(url)){
+                return true;
+            }
+        }
+        return false;
+    }
+}

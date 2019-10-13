@@ -7,6 +7,9 @@
         <title>Initial Data</title>
     </head>
     <body>
+        <%
+            List<MonitoredURL> monitoredURLS = (List<MonitoredURL>) request.getAttribute("monitoredURLS");
+        %>
         <h2>Set your data</h2>
         <table border="1">
             <thead>
@@ -21,9 +24,6 @@
                 </tr>
             </thead>
             <tbody>
-                <%
-                    List<MonitoredURL> monitoredURLS = (List<MonitoredURL>) request.getAttribute("monitoredURLS");
-                %>
                 <%
                     for (MonitoredURL monitoredURL : monitoredURLS){
                 %>
@@ -40,6 +40,10 @@
                             <input type="hidden" name="url" value="<%=monitoredURL.getUrl()%>">
                             <input type="submit" value="Edit">
                         </form>
+                        <form action="remover" method="post">
+                            <input type="hidden" name="url" value="<%=monitoredURL.getUrl()%>">
+                            <input type="submit" value="Remove">
+                        </form>
                     </td>
                 </tr>
                 <%
@@ -47,6 +51,10 @@
                 %>
             </tbody>
         </table>
+        <Br>
+        <form action="newURL.jsp" method="post">
+            <input type="submit" value="Add URL">
+        </form>
         <Br>
         <a href="monitoringTable">Click to start monitoring</a>
     </body>
