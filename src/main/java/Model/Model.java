@@ -33,13 +33,13 @@ public class Model {
                     continue;
                 }
                 //??????
-                new Thread(() ->
+                //new Thread(() ->
                         gatheredData.add(new GatheredData(monitoredURL.getUrl(),
                                 getCurrentResponseCode(monitoredURL.getUrl()),
                                 getCurrentResponseTime(monitoredURL.getUrl()),
                                 getCurrentSize(monitoredURL.getUrl()),
-                                monitoringLeftTime))
-                ).start();
+                                monitoringLeftTime));
+                //).start();
             }
         }
         return gatheredData;

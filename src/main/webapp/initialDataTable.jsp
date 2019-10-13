@@ -47,5 +47,7 @@
                 %>
             </tbody>
         </table>
+        <Br>
+        <a href="monitoringTable">Click to start monitoring</a>
     </body>
 </html>

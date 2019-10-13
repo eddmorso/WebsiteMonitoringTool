@@ -31,4 +31,13 @@
         <servlet-name>Editor</servlet-name>
         <url-pattern>/editorPage</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdaterServlet</servlet-name>
+        <servlet-class>Controller.UpdaterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdaterServlet</servlet-name>
+        <url-pattern>/updater</url-pattern>
+    </servlet-mapping>
 </web-app>
