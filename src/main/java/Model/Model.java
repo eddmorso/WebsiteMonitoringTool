@@ -32,11 +32,14 @@ public class Model {
                 if (monitoringLeftTime <= 0) {
                     continue;
                 }
-                gatheredData.add(new GatheredData(monitoredURL.getUrl(),
-                        getCurrentResponseCode(monitoredURL.getUrl()),
-                        getCurrentResponseTime(monitoredURL.getUrl()),
-                        getCurrentSize(monitoredURL.getUrl()),
-                        monitoringLeftTime));
+                //??????
+                new Thread(() ->
+                        gatheredData.add(new GatheredData(monitoredURL.getUrl(),
+                                getCurrentResponseCode(monitoredURL.getUrl()),
+                                getCurrentResponseTime(monitoredURL.getUrl()),
+                                getCurrentSize(monitoredURL.getUrl()),
+                                monitoringLeftTime))
+                ).start();
             }
         }
         return gatheredData;

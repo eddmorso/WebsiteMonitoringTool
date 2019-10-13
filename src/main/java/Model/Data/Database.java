@@ -22,7 +22,7 @@ public class Database extends Data{
     @Override
     void init() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(DATA_BASE_URL, USER, PASSWORD);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

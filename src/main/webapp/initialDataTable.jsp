@@ -35,6 +35,7 @@
                     <td><%=monitoredURL.getResponseCode()%></td>
                     <td><%=monitoredURL.getMinSize()%></td>
                     <td><%=monitoredURL.getMaxSize()%></td>
+                    <td><a href="editorPage">EDIT</a></td>
                 </tr>
                 <%
                     }

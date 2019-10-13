@@ -12,7 +12,6 @@
     <servlet-mapping>
         <servlet-name>MonitoredDataServlet</servlet-name>
         <url-pattern>/monitoringTable</url-pattern>
-
     </servlet-mapping>
     
     <servlet>
@@ -22,5 +21,14 @@
     <servlet-mapping>
         <servlet-name>InitialDataServlet</servlet-name>
         <url-pattern>/initialDataTable</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Editor</servlet-name>
+        <servlet-class>Controller.EditorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Editor</servlet-name>
+        <url-pattern>/editorPage</url-pattern>
     </servlet-mapping>
 </web-app>
