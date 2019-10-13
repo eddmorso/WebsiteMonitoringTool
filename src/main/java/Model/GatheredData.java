@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.Status;
+import Controller.StatusMessage;
 
 public class GatheredData {
     private String url;
@@ -8,7 +9,7 @@ public class GatheredData {
     private int responseCode;
     private int pageSize;
     private long monitoringTimeLeft;
-    private Status status;
+    private String status;
 
     public GatheredData(String url, int responseCode, long responseTime, int pageSize, long monitoringTimeLeft){
         this.url = url;
@@ -47,11 +48,11 @@ public class GatheredData {
                 "Monitoring time left: " + monitoringTimeLeft + "\n";
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus(StatusMessage status) {
+        this.status = status.toString();
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 }

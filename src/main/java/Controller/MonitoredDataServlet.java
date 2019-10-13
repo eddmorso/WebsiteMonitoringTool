@@ -28,22 +28,23 @@ public class MonitoredDataServlet extends HttpServlet {
             long beginningTime = System.currentTimeMillis();
             List<GatheredData> gatheredData = model.updatePage(beginningTime);
 
-            for (GatheredData data : gatheredData){
-                Status status = Status.OK;
+            for (GatheredData data : gatheredData) {
+                StatusMessage statusMessage = new StatusMessage(Status.OK, "");
 
-                if (!checkResponseCode(data)){
-                    status = Status.CRITICAL;
-                    status.setMsg(status.getMsg() + " " + UNEXPECTED_RESPONSE_CODE_MSG);
+                if (!checkResponseCode(data)) {
+                    statusMessage.changeStatus(Status.CRITICAL);
+                    statusMessage.addMessage(UNEXPECTED_RESPONSE_CODE_MSG);
                 }
-                if (!checkResponseTime(data)){
-                    status = Status.CRITICAL;
-                    status.setMsg(status.getMsg() + " " + UNEXPECTED_TIME_MSG);
+                if (!checkResponseTime(data)) {
+                    statusMessage.changeStatus(Status.CRITICAL);
+                    statusMessage.addMessage(UNEXPECTED_TIME_MSG);
+
                 }
-                if (!checkSize(data)){
-                    status = Status.CRITICAL;
-                    status.setMsg(status.getMsg() + " " + UNEXPECTED_SIZE);
+                if (!checkSize(data)) {
+                    statusMessage.changeStatus(Status.CRITICAL);
+                    statusMessage.addMessage(UNEXPECTED_SIZE);
                 }
-                data.setStatus(status);
+                data.setStatus(statusMessage);
             }
 
             req.setAttribute("gatheredData", gatheredData);
