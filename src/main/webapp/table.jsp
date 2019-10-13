@@ -7,6 +7,9 @@
     <title>MonitoringTable</title>
 </head>
 <body>
+    <%
+        response.setIntHeader("Refresh", 5);
+    %>
     <table border="1">
 
         <thead>

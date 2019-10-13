@@ -25,8 +25,7 @@ public class MonitoredDataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         synchronized (this) {
-            long beginningTime = System.currentTimeMillis();
-            List<GatheredData> gatheredData = model.updatePage(beginningTime);
+            List<GatheredData> gatheredData = model.updateData();
 
             for (GatheredData data : gatheredData) {
                 StatusMessage statusMessage = new StatusMessage(Status.OK, "");
@@ -34,19 +33,24 @@ public class MonitoredDataServlet extends HttpServlet {
                 Status statusTime = checkResponseTime(data);
                 Status statusSize = checkSize(data);
 
-                if (!statusCode.equals(Status.OK)){
+                if (!statusCode.equals(Status.OK)) {
                     statusMessage.changeStatus(statusCode);
                     statusMessage.addMessage(UNEXPECTED_RESPONSE_CODE_MSG);
                 }
 
-                if (!statusTime.equals(Status.OK)){
+                if (!statusTime.equals(Status.OK)) {
                     statusMessage.changeStatus(statusTime);
                     statusMessage.addMessage(UNEXPECTED_TIME_MSG);
                 }
 
-                if (!statusSize.equals(Status.OK)){
-                    statusMessage.changeStatus(statusSize);
-                    statusMessage.addMessage(UNEXPECTED_SIZE);
+                if (!statusSize.equals(Status.OK)) {
+                    if (statusSize.equals(Status.WARNING)){
+                        statusMessage.changeStatus(statusSize);
+                        statusMessage.addMessage(COULDNT_GET_SIZE_MSG);
+                    } else {
+                        statusMessage.changeStatus(statusSize);
+                        statusMessage.addMessage(UNEXPECTED_SIZE);
+                    }
                 }
                 data.setStatus(statusMessage);
             }
@@ -73,7 +77,6 @@ public class MonitoredDataServlet extends HttpServlet {
         synchronized (this) {
             MonitoredURL monitoredURL = model.getMonitoredUrl(data.getUrl());
             long currentTime = data.getResponseTime();
-            long minTime = monitoredURL.getMinResponseTime();
             long maxTime = monitoredURL.getMaxResponseTime();
             long middle = maxTime / 2;
 
@@ -95,6 +98,8 @@ public class MonitoredDataServlet extends HttpServlet {
 
             if (size >= minSize && size <= maxSize) {
                 return Status.OK;
+            } else if (size < 0){
+                return Status.WARNING;
             }
         }
         return Status.CRITICAL;

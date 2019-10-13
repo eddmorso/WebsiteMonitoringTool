@@ -1,8 +1,5 @@
 package Model;
 
-import Controller.Status;
-import Controller.StatusMessage;
-
 public class GatheredData {
     private String url;
     private long responseTime;

@@ -11,14 +11,16 @@ public class Model {
     private List<MonitoredURL> monitoredURLS;
     private List<GatheredData> gatheredData;
     private Data data;
+    private long beginningTime;
 
     public Model(Data data){
         this.data = data;
+        beginningTime = System.currentTimeMillis();
         monitoredURLS = data.getMonitoredURL();
         gatheredData = new ArrayList<>();
     }
 
-    public List<GatheredData> updatePage(long beginningTime) {
+    public List<GatheredData> updateData() {
         long deltaTime = System.currentTimeMillis() - beginningTime;
 
         gatheredData.clear();
