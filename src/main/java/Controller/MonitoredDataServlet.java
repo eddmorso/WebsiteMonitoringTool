@@ -30,18 +30,22 @@ public class MonitoredDataServlet extends HttpServlet {
 
             for (GatheredData data : gatheredData) {
                 StatusMessage statusMessage = new StatusMessage(Status.OK, "");
+                Status statusCode = checkResponseCode(data);
+                Status statusTime = checkResponseTime(data);
+                Status statusSize = checkSize(data);
 
-                if (!checkResponseCode(data)) {
-                    statusMessage.changeStatus(Status.CRITICAL);
+                if (!statusCode.equals(Status.OK)){
+                    statusMessage.changeStatus(statusCode);
                     statusMessage.addMessage(UNEXPECTED_RESPONSE_CODE_MSG);
                 }
-                if (!checkResponseTime(data)) {
-                    statusMessage.changeStatus(Status.CRITICAL);
-                    statusMessage.addMessage(UNEXPECTED_TIME_MSG);
 
+                if (!statusTime.equals(Status.OK)){
+                    statusMessage.changeStatus(statusTime);
+                    statusMessage.addMessage(UNEXPECTED_TIME_MSG);
                 }
-                if (!checkSize(data)) {
-                    statusMessage.changeStatus(Status.CRITICAL);
+
+                if (!statusSize.equals(Status.OK)){
+                    statusMessage.changeStatus(statusSize);
                     statusMessage.addMessage(UNEXPECTED_SIZE);
                 }
                 data.setStatus(statusMessage);
@@ -54,32 +58,35 @@ public class MonitoredDataServlet extends HttpServlet {
         }
     }
 
-    public boolean checkResponseCode(GatheredData data){
+    public Status checkResponseCode(GatheredData data){
         synchronized (this) {
             MonitoredURL monitoredURL = model.getMonitoredUrl(data.getUrl());
 
             if (monitoredURL.getResponseCode() == data.getResponseCode()) {
-                return true;
+                return Status.OK;
             }
         }
-        return false;
+        return Status.CRITICAL;
     }
 
-    public boolean checkResponseTime(GatheredData data){
+    public Status checkResponseTime(GatheredData data){
         synchronized (this) {
             MonitoredURL monitoredURL = model.getMonitoredUrl(data.getUrl());
             long currentTime = data.getResponseTime();
             long minTime = monitoredURL.getMinResponseTime();
             long maxTime = monitoredURL.getMaxResponseTime();
+            long middle = maxTime / 2;
 
-            if (currentTime >= minTime && currentTime <= maxTime) {
-                return true;
+            if (currentTime <= middle){
+                return Status.OK;
+            } else if (currentTime > middle && currentTime <= maxTime){
+                return Status.WARNING;
             }
         }
-        return false;
+        return Status.CRITICAL;
     }
 
-    public boolean checkSize(GatheredData data){
+    public Status checkSize(GatheredData data){
         synchronized (this) {
             MonitoredURL monitoredURL = model.getMonitoredUrl(data.getUrl());
             int minSize = monitoredURL.getMinSize();
@@ -87,9 +94,9 @@ public class MonitoredDataServlet extends HttpServlet {
             int size = data.getPageSize();
 
             if (size >= minSize && size <= maxSize) {
-                return true;
+                return Status.OK;
             }
         }
-        return false;
+        return Status.CRITICAL;
     }
 }
