@@ -35,7 +35,12 @@
                     <td><%=monitoredURL.getResponseCode()%></td>
                     <td><%=monitoredURL.getMinSize()%></td>
                     <td><%=monitoredURL.getMaxSize()%></td>
-                    <td><a href="editorPage">EDIT</a></td>
+                    <td>
+                        <form action="editorPage" method="post">
+                            <input type="hidden" name="url" value="<%=monitoredURL.getUrl()%>">
+                            <input type="submit" value="Edit">
+                        </form>
+                    </td>
                 </tr>
                 <%
                     }

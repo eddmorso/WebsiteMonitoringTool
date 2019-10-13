@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class EditorServlet extends HttpServlet {
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String url = req.getParameter("url");
+        System.out.println(url);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("editorPage.jsp");
         requestDispatcher.forward(req, resp);
