@@ -13,32 +13,30 @@ public class Model {
     private List<MonitoredURL> monitoredURLS;
     private List<GatheredData> gatheredData;
     private Data data;
-    private long beginningTime;
+
 
     public Model(Data data){
         this.data = data;
-        beginningTime = System.currentTimeMillis();
         monitoredURLS = data.getMonitoredURL();
         gatheredData = new ArrayList<>();
+
+        monitoredURLS.forEach(monitoredURL -> monitoredURL.setBeginningTime(System.currentTimeMillis()));
     }
 
     public List<GatheredData> updateData() {
-        long deltaTime = System.currentTimeMillis() - beginningTime;
-
-        //gatheredData.clear();
-
         if (!monitoredURLS.isEmpty()) {
             for (MonitoredURL monitoredURL : monitoredURLS) {
+                long deltaTime = System.currentTimeMillis() - monitoredURL.getBeginningTime();
                 long monitoringLeftTime = monitoredURL.getMonitoringTimeSeconds() * 1000 - deltaTime;
 
-                if (monitoringLeftTime <= 0) {
-                    gatheredData.remove(new GatheredData(monitoredURL.getUrl()));
-                    continue;
-                }
                 //??????
                 //new Thread(() ->
                 if (gatheredData.contains(new GatheredData(monitoredURL.getUrl()))) {
                     if (!monitoredURL.isStopped()) {
+                        if (monitoringLeftTime <= 0) {
+                            gatheredData.remove(new GatheredData(monitoredURL.getUrl()));
+                            continue;
+                        }
                         gatheredData.remove(new GatheredData(monitoredURL.getUrl()));
                         gatheredData.add(new GatheredData(monitoredURL.getUrl(),
                                 getCurrentResponseCode(monitoredURL.getUrl()),
@@ -107,7 +105,13 @@ public class Model {
     }
 
     public void startMonitoredURL(String url){
-        monitoredURLS.get(monitoredURLS.indexOf(new MonitoredURL(url))).setStopped(false);
+        int indexUrl = monitoredURLS.indexOf(new MonitoredURL(url));
+        int indexData = gatheredData.indexOf(new GatheredData(url));
+        int newMonitoringTime = (int) gatheredData.get(indexData).getMonitoringTimeLeft() / 1000;
+
+        monitoredURLS.get(indexUrl).setStopped(false);
+        monitoredURLS.get(indexUrl).setBeginningTime(System.currentTimeMillis());
+        monitoredURLS.get(indexUrl).setMonitoringTimeSeconds(newMonitoringTime);
     }
 
     public void addMonitoredURL(MonitoredURL monitoredURL){

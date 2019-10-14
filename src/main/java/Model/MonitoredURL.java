@@ -9,6 +9,7 @@ public class MonitoredURL{
     private int minSize;
     private int maxSize;
     private boolean isStopped = false;
+    private long beginningTime;
 
     public MonitoredURL(String url, int minResponseTime, int maxResponseTime, int monitoringTimeSeconds,
                         int responseCode, int minSize, int maxSize){
@@ -87,6 +88,15 @@ public class MonitoredURL{
 
     public void setStopped(boolean stopped) {
         isStopped = stopped;
+
+    }
+
+    public void setBeginningTime(long beginningTime) {
+        this.beginningTime = beginningTime;
+    }
+
+    public long getBeginningTime() {
+        return beginningTime;
     }
 
     @Override
