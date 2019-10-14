@@ -8,6 +8,7 @@ public class MonitoredURL{
     private int responseCode;
     private int minSize;
     private int maxSize;
+    private boolean isStopped = false;
 
     public MonitoredURL(String url, int minResponseTime, int maxResponseTime, int monitoringTimeSeconds,
                         int responseCode, int minSize, int maxSize){
@@ -78,6 +79,14 @@ public class MonitoredURL{
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public boolean isStopped() {
+        return isStopped;
+    }
+
+    public void setStopped(boolean stopped) {
+        isStopped = stopped;
     }
 
     @Override

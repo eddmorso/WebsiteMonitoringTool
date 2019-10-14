@@ -16,6 +16,10 @@ public class GatheredData {
         this.monitoringTimeLeft = monitoringTimeLeft;
     }
 
+    public GatheredData(String url){
+        this.url = url;
+    }
+
     public long getResponseTime() {
         return responseTime;
     }
@@ -36,20 +40,31 @@ public class GatheredData {
         return monitoringTimeLeft;
     }
 
-    @Override
-    public String toString() {
-        return "URL: " + url + "\n" +
-                "Page size: " + pageSize + "\n" +
-                "Response code: " + responseCode + "\n" +
-                "Response time: " + responseTime + "\n" +
-                "Monitoring time left: " + monitoringTimeLeft + "\n";
-    }
-
     public void setStatus(StatusMessage status) {
         this.status = status.toString();
     }
 
     public String getStatus() {
         return status;
+    }
+
+    @Override
+    public String toString() {
+        return "URL: " + url;
+    }
+
+    @Override
+    public int hashCode() {
+        return url.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof GatheredData){
+            GatheredData gatheredData = (GatheredData) obj;
+
+            return gatheredData.url.equals(this.url);
+        }
+        return false;
     }
 }

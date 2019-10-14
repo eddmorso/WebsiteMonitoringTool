@@ -1,5 +1,6 @@
 <%@ page import="Model.GatheredData" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" %>
 <html>
@@ -35,6 +36,18 @@
                 <td><%=data.getResponseTime()%></td>
                 <td><%=data.getMonitoringTimeLeft()%></td>
                 <td><%=data.getStatus()%></td>
+                <td>
+                    <form action="monitoringTable" method="post">
+                        <input type="hidden" name="buttonRun" value="<%=data.getUrl()%>">
+                        <input type="submit" value="Run">
+                    </form>
+                </td>
+                <td>
+                    <form action="monitoringTable" method="post">
+                        <input type="hidden" name="buttonStop" value="<%=data.getUrl()%>">
+                        <input type="submit" value="Stop">
+                    </form>
+                </td>
             </tr>
             <%
                 }

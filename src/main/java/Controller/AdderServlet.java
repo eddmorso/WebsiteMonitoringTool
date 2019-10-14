@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 public class AdderServlet extends HttpServlet {
@@ -40,9 +39,17 @@ public class AdderServlet extends HttpServlet {
                     "<html>" +
                             "<head></head>" +
                             "<body>" +
-                                "<script>alert('URL already exists');</script>" +
+//                                "<script>const func = () => {\n" +
+//                                    " alert('URL is already exists')\n" +
+//                                    "window.location.href = 'initialDataTable'\n" +
+//                                "}" +
+//                            "func()" +
+//                            "</script>" +
+                            "<script>alert('Url is already exists')</script>" +
                             "</body>" +
                        "</html>");
+//            RequestDispatcher requestDispatcher = req.getRequestDispatcher("initialDataTable");
+//            requestDispatcher.forward(req, resp);
         }
     }
 

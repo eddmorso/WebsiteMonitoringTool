@@ -40,6 +40,8 @@
                             <input type="hidden" name="url" value="<%=monitoredURL.getUrl()%>">
                             <input type="submit" value="Edit">
                         </form>
+                    </td>
+                    <td>
                         <form action="remover" method="post">
                             <input type="hidden" name="url" value="<%=monitoredURL.getUrl()%>">
                             <input type="submit" value="Remove">

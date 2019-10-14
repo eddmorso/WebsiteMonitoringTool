@@ -20,6 +20,7 @@ public class InitialDataServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        model.updateMonitoredURLS();
         List<MonitoredURL> monitoredURLS = model.getMonitoredUrl();
 
         req.setAttribute("monitoredURLS", monitoredURLS);
@@ -30,7 +31,7 @@ public class InitialDataServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        model.updateMonitoredURLS();
+
         doGet(req, resp);
     }
 }

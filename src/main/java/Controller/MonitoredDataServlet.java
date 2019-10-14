@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 public class MonitoredDataServlet extends HttpServlet {
     private Model model;
@@ -59,6 +60,22 @@ public class MonitoredDataServlet extends HttpServlet {
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("monitoringTable.jsp");
             requestDispatcher.forward(req, resp);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String urlRun = req.getParameter("buttonRun");
+        String urlStop = req.getParameter("buttonStop");
+
+        if (urlRun != null) {
+           model.startMonitoredURL(urlRun);
+           doGet(req, resp);
+        }
+
+        if (urlStop != null){
+            model.stopMonitoredURL(urlStop);
+            doGet(req, resp);
         }
     }
 

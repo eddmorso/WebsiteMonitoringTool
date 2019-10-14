@@ -5,7 +5,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Model {
     private List<MonitoredURL> monitoredURLS;
@@ -23,23 +25,35 @@ public class Model {
     public List<GatheredData> updateData() {
         long deltaTime = System.currentTimeMillis() - beginningTime;
 
-        gatheredData.clear();
+        //gatheredData.clear();
 
         if (!monitoredURLS.isEmpty()) {
             for (MonitoredURL monitoredURL : monitoredURLS) {
                 long monitoringLeftTime = monitoredURL.getMonitoringTimeSeconds() * 1000 - deltaTime;
 
                 if (monitoringLeftTime <= 0) {
+                    gatheredData.remove(new GatheredData(monitoredURL.getUrl()));
                     continue;
                 }
                 //??????
                 //new Thread(() ->
+                if (gatheredData.contains(new GatheredData(monitoredURL.getUrl()))) {
+                    if (!monitoredURL.isStopped()) {
+                        gatheredData.remove(new GatheredData(monitoredURL.getUrl()));
                         gatheredData.add(new GatheredData(monitoredURL.getUrl(),
                                 getCurrentResponseCode(monitoredURL.getUrl()),
                                 getCurrentResponseTime(monitoredURL.getUrl()),
                                 getCurrentSize(monitoredURL.getUrl()),
                                 monitoringLeftTime));
-                //).start();
+                    }
+                    //).start();
+                } else {
+                    gatheredData.add(new GatheredData(monitoredURL.getUrl(),
+                            getCurrentResponseCode(monitoredURL.getUrl()),
+                            getCurrentResponseTime(monitoredURL.getUrl()),
+                            getCurrentSize(monitoredURL.getUrl()),
+                            monitoringLeftTime));
+                }
             }
         }
         return gatheredData;
@@ -89,11 +103,11 @@ public class Model {
     }
 
     public void stopMonitoredURL(String url){
-
+        monitoredURLS.get(monitoredURLS.indexOf(new MonitoredURL(url))).setStopped(true);
     }
 
     public void startMonitoredURL(String url){
-
+        monitoredURLS.get(monitoredURLS.indexOf(new MonitoredURL(url))).setStopped(false);
     }
 
     public void addMonitoredURL(MonitoredURL monitoredURL){
