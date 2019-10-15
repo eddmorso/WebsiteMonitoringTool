@@ -20,12 +20,12 @@ public class Monitor extends Thread{
         }
     }
 
-    public MonitoringResult updateData() {
+    public void updateData() {
         if (monitoredURL != null) {
             long monitoringLeftTime = getMonitoringTimeLeft();
 
             if (monitoringLeftTime < 0){
-                return null;
+                return;
             }
 
             monitoringResult = new MonitoringResult(monitoredURL.getUrl(),
@@ -33,7 +33,6 @@ public class Monitor extends Thread{
                     getCurrentResponseCode(),
                     getCurrentSize(),
                     monitoringLeftTime);
-            return monitoringResult;
         } else {
             throw new RuntimeException("No monitored url to update");
         }

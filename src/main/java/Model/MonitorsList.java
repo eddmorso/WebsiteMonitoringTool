@@ -1,8 +1,11 @@
 package Model;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class MonitorsLit {
+public class MonitorsList extends Iterable<Monitor>{
+    private ConcurrentHashMap<MonitoredURL, Monitor> monitors;
 
     public void addMonitoredURL(MonitoredURL monitoredURL){
         monitoringDataStorage.addMonitoredURL(monitoredURL);
@@ -55,5 +58,10 @@ public class MonitorsLit {
             }
         }
         throw new RuntimeException("No such url");
+    }
+
+    @Override
+    public Iterator<Monitor> iterator() {
+        return monitors.values().iterator();
     }
 }
