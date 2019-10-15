@@ -8,7 +8,7 @@ public class MonitoringResult {
     private long monitoringTimeLeft;
     private String status;
 
-    public MonitoringResult(String url, int responseCode, long responseTime, int pageSize, long monitoringTimeLeft){
+    public MonitoringResult(String url, long responseTime, int responseCode, int pageSize, long monitoringTimeLeft){
         this.url = url;
         this.pageSize = pageSize;
         this.responseCode = responseCode;
