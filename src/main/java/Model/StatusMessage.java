@@ -19,6 +19,14 @@ public class StatusMessage {
         }
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
     @Override
     public String toString() {
         return status.toString() + " " + msg;

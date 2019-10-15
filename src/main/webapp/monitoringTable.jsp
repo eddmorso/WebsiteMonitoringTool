@@ -1,11 +1,26 @@
 <%@ page import="Model.GatheredData" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>Monitoring Table</title>
+    <script language="JavaScript" defer>
+        var warningSound = new Audio("http://localhost:8080/WebsiteMonitoringTool/webResources/Elevator.mp3");
+        var criticalSound = new Audio("http://localhost:8080/WebsiteMonitoringTool/webResources/BikeHorn.mp3");
+        <%
+            if ((boolean) request.getAttribute("isWarning")){
+        %>
+        warningSound.play();
+        <%
+            } if ((boolean) request.getAttribute("isCritical")) {
+        %>
+        criticalSound.play();
+        <%
+            }
+        %>
+    </script>
+    <%--<audio src="http://localhost:8080/WebsiteMonitoringTool/Elevator.mp3"></audio> --%>
 </head>
 <body>
     <%

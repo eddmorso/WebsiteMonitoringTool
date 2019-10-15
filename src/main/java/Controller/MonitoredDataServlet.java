@@ -8,9 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 public class MonitoredDataServlet extends HttpServlet {
     private Model model;
@@ -26,6 +26,8 @@ public class MonitoredDataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         synchronized (this) {
+            boolean isWarning = false;
+            boolean isCritical = false;
             List<GatheredData> gatheredData = model.updateData();
 
             for (GatheredData data : gatheredData) {
@@ -54,8 +56,16 @@ public class MonitoredDataServlet extends HttpServlet {
                     }
                 }
                 data.setStatus(statusMessage);
+
+                if (statusMessage.getStatus().equals(Status.WARNING)){
+                    isWarning = true;
+                } else if (statusMessage.getStatus().equals(Status.CRITICAL)){
+                    isCritical = true;
+                }
             }
 
+            req.setAttribute("isWarning", isWarning);
+            req.setAttribute("isCritical", isCritical);
             req.setAttribute("gatheredData", gatheredData);
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("monitoringTable.jsp");
