@@ -1,6 +1,6 @@
 package Model;
 
-public class GatheredData {
+public class MonitoringResult {
     private String url;
     private long responseTime;
     private int responseCode;
@@ -8,7 +8,7 @@ public class GatheredData {
     private long monitoringTimeLeft;
     private String status;
 
-    public GatheredData(String url, int responseCode, long responseTime, int pageSize, long monitoringTimeLeft){
+    public MonitoringResult(String url, int responseCode, long responseTime, int pageSize, long monitoringTimeLeft){
         this.url = url;
         this.pageSize = pageSize;
         this.responseCode = responseCode;
@@ -16,7 +16,7 @@ public class GatheredData {
         this.monitoringTimeLeft = monitoringTimeLeft;
     }
 
-    public GatheredData(String url){
+    public MonitoringResult(String url){
         this.url = url;
     }
 
@@ -60,10 +60,10 @@ public class GatheredData {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof GatheredData){
-            GatheredData gatheredData = (GatheredData) obj;
+        if (obj instanceof MonitoringResult){
+            MonitoringResult monitoringResult = (MonitoringResult) obj;
 
-            return gatheredData.url.equals(this.url);
+            return monitoringResult.url.equals(this.url);
         }
         return false;
     }

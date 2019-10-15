@@ -6,7 +6,7 @@
     <body>
         <h2>Website monitoring tool</h2>
         <li>
-            <a href="initialDataTable">Click to adjust data</a>
+            <a href="initialDataTable">Click to adjust monitoringDataStorage</a>
         </li>
         <li>
             <a href="monitoringTable">Click to begin monitoring</a>

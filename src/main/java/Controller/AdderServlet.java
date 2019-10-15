@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Data.Database;
+import Model.Data.DatabaseMonitoringDataStorage;
 import Model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -12,10 +12,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class AdderServlet extends HttpServlet {
-    private Model model;
+    private Monitor monitor;
 
     public AdderServlet(){
-        model = new Model(new Database());
+        monitor = new Monitor(new DatabaseMonitoringDataStorage());
     }
 
     @Override
@@ -30,7 +30,7 @@ public class AdderServlet extends HttpServlet {
             int minSize = Integer.valueOf(req.getParameter("minSize"));
             int maxSize = Integer.valueOf(req.getParameter("maxSize"));
 
-            model.addMonitoredURL(new MonitoredURL(url, minTime, maxTime, monitoringTimeSeconds, responseCode, minSize, maxSize));
+            monitor.addMonitoredURL(new MonitoredURL(url, minTime, maxTime, monitoringTimeSeconds, responseCode, minSize, maxSize));
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("initialDataTable");
             requestDispatcher.forward(req, resp);
@@ -54,7 +54,7 @@ public class AdderServlet extends HttpServlet {
     }
 
     public boolean isExistedUrl(String url){
-        List<MonitoredURL> monitoredURLS = model.getMonitoredUrl();
+        List<MonitoredURL> monitoredURLS = monitor.getMonitoredUrl();
 
         for (MonitoredURL monitoredURL : monitoredURLS){
             if (monitoredURL.getUrl().equals(url)){

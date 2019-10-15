@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Data.Database;
+import Model.Data.DatabaseMonitoringDataStorage;
 import Model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class UpdaterServlet extends HttpServlet {
-    private Model model;
+    private Monitor monitor;
 
     public UpdaterServlet(){
-        model = new Model(new Database());
+        monitor = new Monitor(new DatabaseMonitoringDataStorage());
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getParameter("url");
-        MonitoredURL monitoredURL = model.getMonitoredUrl(url);
+        MonitoredURL monitoredURL = monitor.getMonitoredUrl(url);
         int maxTime = Integer.valueOf(req.getParameter("maxResponseTime"));
         int minTime = Integer.valueOf(req.getParameter("minResponseTime"));
         int monitoringTimeSeconds = Integer.valueOf(req.getParameter("monitoringTimeSeconds"));
@@ -33,22 +33,22 @@ public class UpdaterServlet extends HttpServlet {
 
         if (monitoredURL != null){
             if (maxTime != monitoredURL.getMaxResponseTime()){
-                model.updateMaxResponseTime(url, maxTime);
+                monitor.updateMaxResponseTime(url, maxTime);
             }
             if (minTime != monitoredURL.getMinResponseTime()){
-                model.updateMinResponseTime(url, minTime);
+                monitor.updateMinResponseTime(url, minTime);
             }
             if (monitoringTimeSeconds != monitoredURL.getMonitoringTimeSeconds()){
-                model.updateMonitoringTime(url, monitoringTimeSeconds);
+                monitor.updateMonitoringTime(url, monitoringTimeSeconds);
             }
             if (responseCode != monitoredURL.getResponseCode()){
-                model.updateResponseCode(url, responseCode);
+                monitor.updateResponseCode(url, responseCode);
             }
             if (minSize != monitoredURL.getMinSize()){
-                model.updateMinSize(url, minSize);
+                monitor.updateMinSize(url, minSize);
             }
             if (maxSize != monitoredURL.getMaxSize()){
-                model.updateMaxSize(url, maxSize);
+                monitor.updateMaxSize(url, maxSize);
             }
         }
 

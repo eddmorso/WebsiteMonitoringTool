@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-//        Model model = new Model(new Database());
+//        Monitor model = new Monitor(new DatabaseMonitoringDataStorage());
 //        model.updateMonitoredURLS();
 //
-//        for (GatheredData gatheredData : model.updateData()){
+//        for (MonitoringResult gatheredData : model.updateData()){
 //            System.out.println(gatheredData);
 //        }
     }

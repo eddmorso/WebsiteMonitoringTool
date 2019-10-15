@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Data.Database;
+import Model.Data.DatabaseMonitoringDataStorage;
 import Model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -8,19 +8,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class MonitoredDataServlet extends HttpServlet {
-    private Model model;
+    private Monitor monitor;
     private final String COULDNT_GET_SIZE_MSG = "Couldn't get page size;";
     private final String UNEXPECTED_TIME_MSG = "Unexpected response time;";
     private final String UNEXPECTED_RESPONSE_CODE_MSG = "Unexpected response code;";
     private final String UNEXPECTED_SIZE = "Unexpected size;";
 
     public MonitoredDataServlet(){
-        model = new Model(new Database());
+        monitor = new Monitor(new DatabaseMonitoringDataStorage());
     }
 
     @Override
@@ -28,9 +27,9 @@ public class MonitoredDataServlet extends HttpServlet {
         synchronized (this) {
             boolean isWarning = false;
             boolean isCritical = false;
-            List<GatheredData> gatheredData = model.updateData();
+            List<MonitoringResult> gatheredData = monitor.updateData();
 
-            for (GatheredData data : gatheredData) {
+            for (MonitoringResult data : gatheredData) {
                 StatusMessage statusMessage = new StatusMessage(Status.OK, "");
                 Status statusCode = checkResponseCode(data);
                 Status statusTime = checkResponseTime(data);
@@ -79,19 +78,19 @@ public class MonitoredDataServlet extends HttpServlet {
         String urlStop = req.getParameter("buttonStop");
 
         if (urlRun != null) {
-           model.startMonitoredURL(urlRun);
+           monitor.startMonitoredURL(urlRun);
            doGet(req, resp);
         }
 
         if (urlStop != null){
-            model.stopMonitoredURL(urlStop);
+            monitor.stopMonitoredURL(urlStop);
             doGet(req, resp);
         }
     }
 
-    public Status checkResponseCode(GatheredData data){
+    public Status checkResponseCode(MonitoringResult data){
         synchronized (this) {
-            MonitoredURL monitoredURL = model.getMonitoredUrl(data.getUrl());
+            MonitoredURL monitoredURL = monitor.getMonitoredUrl(data.getUrl());
 
             if (monitoredURL.getResponseCode() == data.getResponseCode()) {
                 return Status.OK;
@@ -100,9 +99,9 @@ public class MonitoredDataServlet extends HttpServlet {
         return Status.CRITICAL;
     }
 
-    public Status checkResponseTime(GatheredData data){
+    public Status checkResponseTime(MonitoringResult data){
         synchronized (this) {
-            MonitoredURL monitoredURL = model.getMonitoredUrl(data.getUrl());
+            MonitoredURL monitoredURL = monitor.getMonitoredUrl(data.getUrl());
             long currentTime = data.getResponseTime();
             long maxTime = monitoredURL.getMaxResponseTime();
             long middle = maxTime / 2;
@@ -116,9 +115,9 @@ public class MonitoredDataServlet extends HttpServlet {
         return Status.CRITICAL;
     }
 
-    public Status checkSize(GatheredData data){
+    public Status checkSize(MonitoringResult data){
         synchronized (this) {
-            MonitoredURL monitoredURL = model.getMonitoredUrl(data.getUrl());
+            MonitoredURL monitoredURL = monitor.getMonitoredUrl(data.getUrl());
             int minSize = monitoredURL.getMinSize();
             int maxSize = monitoredURL.getMaxSize();
             int size = data.getPageSize();

@@ -1,27 +1,27 @@
 package Model;
 
-import Model.Data.Data;
+import Model.Data.MonitoringDataStorage;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model {
+public class Monitor {
     private List<MonitoredURL> monitoredURLS;
-    private List<GatheredData> gatheredData;
-    private Data data;
+    private List<MonitoringResult> gatheredData;
+    private MonitoringDataStorage monitoringDataStorage;
 
 
-    public Model(Data data){
-        this.data = data;
-        monitoredURLS = data.getMonitoredURL();
+    public Monitor(MonitoringDataStorage monitoringDataStorage){
+        this.monitoringDataStorage = monitoringDataStorage;
+        monitoredURLS = monitoringDataStorage.getMonitoredURL();
         gatheredData = new ArrayList<>();
 
         monitoredURLS.forEach(monitoredURL -> monitoredURL.setBeginningTime(System.currentTimeMillis()));
     }
 
-    public List<GatheredData> updateData() {
+    public List<MonitoringResult> updateData() {
         if (!monitoredURLS.isEmpty()) {
             for (MonitoredURL monitoredURL : monitoredURLS) {
                 long deltaTime = System.currentTimeMillis() - monitoredURL.getBeginningTime();
@@ -29,14 +29,14 @@ public class Model {
 
                 //??????
                 //new Thread(() ->
-                if (gatheredData.contains(new GatheredData(monitoredURL.getUrl()))) {
+                if (gatheredData.contains(new MonitoringResult(monitoredURL.getUrl()))) {
                     if (!monitoredURL.isStopped()) {
                         if (monitoringLeftTime <= 0) {
-                            gatheredData.remove(new GatheredData(monitoredURL.getUrl()));
+                            gatheredData.remove(new MonitoringResult(monitoredURL.getUrl()));
                             continue;
                         }
-                        gatheredData.remove(new GatheredData(monitoredURL.getUrl()));
-                        gatheredData.add(new GatheredData(monitoredURL.getUrl(),
+                        gatheredData.remove(new MonitoringResult(monitoredURL.getUrl()));
+                        gatheredData.add(new MonitoringResult(monitoredURL.getUrl(),
                                 getCurrentResponseCode(monitoredURL.getUrl()),
                                 getCurrentResponseTime(monitoredURL.getUrl()),
                                 getCurrentSize(monitoredURL.getUrl()),
@@ -44,7 +44,7 @@ public class Model {
                     }
                     //).start();
                 } else {
-                    gatheredData.add(new GatheredData(monitoredURL.getUrl(),
+                    gatheredData.add(new MonitoringResult(monitoredURL.getUrl(),
                             getCurrentResponseCode(monitoredURL.getUrl()),
                             getCurrentResponseTime(monitoredURL.getUrl()),
                             getCurrentSize(monitoredURL.getUrl()),
@@ -56,7 +56,7 @@ public class Model {
     }
 
     public void updateMonitoredURLS(){
-        monitoredURLS = data.getMonitoredURL();
+        monitoredURLS = monitoringDataStorage.getMonitoredURL();
     }
 
     public long getCurrentResponseTime(String url){
@@ -104,7 +104,7 @@ public class Model {
 
     public void startMonitoredURL(String url){
         int indexUrl = monitoredURLS.indexOf(new MonitoredURL(url));
-        int indexData = gatheredData.indexOf(new GatheredData(url));
+        int indexData = gatheredData.indexOf(new MonitoringResult(url));
         int newMonitoringTime = (int) gatheredData.get(indexData).getMonitoringTimeLeft() / 1000;
 
         monitoredURLS.get(indexUrl).setStopped(false);
@@ -113,42 +113,42 @@ public class Model {
     }
 
     public void addMonitoredURL(MonitoredURL monitoredURL){
-        data.addMonitoredURL(monitoredURL);
+        monitoringDataStorage.addMonitoredURL(monitoredURL);
         updateMonitoredURLS();
     }
 
     public void removeMonitoredURL(String url){
-        data.removeMonitoredURL(url);
+        monitoringDataStorage.removeMonitoredURL(url);
         updateMonitoredURLS();
     }
 
     public void updateMinResponseTime(String targetUrl, int updatedMinResponseTime){
-        data.updateMinResponseTime(targetUrl, updatedMinResponseTime);
+        monitoringDataStorage.updateMinResponseTime(targetUrl, updatedMinResponseTime);
         updateMonitoredURLS();
     }
 
     public void updateMaxResponseTime(String targetUrl, int updatedMaxResponseTime){
-        data.updateMaxResponseTime(targetUrl, updatedMaxResponseTime);
+        monitoringDataStorage.updateMaxResponseTime(targetUrl, updatedMaxResponseTime);
         updateMonitoredURLS();
     }
 
     public void updateMonitoringTime(String targetUrl, int updateMonitoringTime){
-        data.updateMonitoringTime(targetUrl, updateMonitoringTime);
+        monitoringDataStorage.updateMonitoringTime(targetUrl, updateMonitoringTime);
         updateMonitoredURLS();
     }
 
     public void updateResponseCode(String targetUrl, int updatedResponseCode){
-        data.updateResponseCode(targetUrl, updatedResponseCode);
+        monitoringDataStorage.updateResponseCode(targetUrl, updatedResponseCode);
         updateMonitoredURLS();
     }
 
     public void updateMinSize(String targetUrl, int updateMinSize){
-        data.updateMinSize(targetUrl, updateMinSize);
+        monitoringDataStorage.updateMinSize(targetUrl, updateMinSize);
         updateMonitoredURLS();
     }
 
     public void updateMaxSize(String targetUrl, int updateMaxSize){
-        data.updateMinSize(targetUrl, updateMaxSize);
+        monitoringDataStorage.updateMinSize(targetUrl, updateMaxSize);
         updateMonitoredURLS();
     }
 

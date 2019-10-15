@@ -1,18 +1,17 @@
 package Model.Data;
 import Model.MonitoredURL;
 
-import java.awt.image.DataBuffer;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database extends Data{
+public class DatabaseMonitoringDataStorage extends MonitoringDataStorage {
     private final String DATA_BASE_URL = "jdbc:mysql://localhost:3306/monitored_urls";
     private final String USER = "test";
     private final String PASSWORD = "test";
     private Connection connection;
 
-//    public Database(String url, String user, String pass){
+//    public DatabaseMonitoringDataStorage(String url, String user, String pass){
 //        super();
 //        DATA_BASE_URL = url;
 //        USER = user;

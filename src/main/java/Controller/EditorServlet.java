@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Data.Database;
+import Model.Data.DatabaseMonitoringDataStorage;
 import Model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class EditorServlet extends HttpServlet {
-    private Model model;
+    private Monitor monitor;
 
     public EditorServlet(){
-        model = new Model(new Database());
+        monitor = new Monitor(new DatabaseMonitoringDataStorage());
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getParameter("url");
-        MonitoredURL monitoredURL = model.getMonitoredUrl(url);
+        MonitoredURL monitoredURL = monitor.getMonitoredUrl(url);
 
         req.setAttribute("monitoredURL", monitoredURL);
         req.setAttribute("url", url);

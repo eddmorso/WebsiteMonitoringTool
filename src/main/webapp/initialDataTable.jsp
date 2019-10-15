@@ -10,7 +10,7 @@
         <%
             List<MonitoredURL> monitoredURLS = (List<MonitoredURL>) request.getAttribute("monitoredURLS");
         %>
-        <h2>Set your data</h2>
+        <h2>Set your monitoringDataStorage</h2>
         <table border="1">
             <thead>
                 <tr>

@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.*;
-import Model.Data.Database;
+import Model.Data.DatabaseMonitoringDataStorage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,16 +12,16 @@ import java.io.IOException;
 import java.util.List;
 
 public class InitialDataServlet extends HttpServlet {
-    private Model model;
+    private Monitor monitor;
 
     public InitialDataServlet(){
-        this.model = new Model(new Database());
+        this.monitor = new Monitor(new DatabaseMonitoringDataStorage());
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        model.updateMonitoredURLS();
-        List<MonitoredURL> monitoredURLS = model.getMonitoredUrl();
+        monitor.updateMonitoredURLS();
+        List<MonitoredURL> monitoredURLS = monitor.getMonitoredUrl();
 
         req.setAttribute("monitoredURLS", monitoredURLS);
 

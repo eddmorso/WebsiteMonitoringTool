@@ -1,4 +1,4 @@
-<%@ page import="Model.GatheredData" %>
+<%@ page import="Model.MonitoringResult" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" %>
@@ -39,27 +39,27 @@
         </thead>
         <tbody>
             <%
-                List<GatheredData> gatheredData = (List<GatheredData>) request.getAttribute("gatheredData");
+                List<MonitoringResult> monitoringResult = (List<MonitoringResult>) request.getAttribute("monitoringResult");
             %>
             <%
-                for (GatheredData data : gatheredData){
+                for (MonitoringResult monitoringDataStorage : monitoringResult){
             %>
             <tr>
-                <td><%=data.getUrl()%></td>
-                <td><%=data.getPageSize()%></td>
-                <td><%=data.getResponseCode()%>></td>
-                <td><%=data.getResponseTime()%></td>
-                <td><%=data.getMonitoringTimeLeft()%></td>
-                <td><%=data.getStatus()%></td>
+                <td><%=monitoringDataStorage.getUrl()%></td>
+                <td><%=monitoringDataStorage.getPageSize()%></td>
+                <td><%=monitoringDataStorage.getResponseCode()%>></td>
+                <td><%=monitoringDataStorage.getResponseTime()%></td>
+                <td><%=monitoringDataStorage.getMonitoringTimeLeft()%></td>
+                <td><%=monitoringDataStorage.getStatus()%></td>
                 <td>
                     <form action="monitoringTable" method="post">
-                        <input type="hidden" name="buttonRun" value="<%=data.getUrl()%>">
+                        <input type="hidden" name="buttonRun" value="<%=monitoringDataStorage.getUrl()%>">
                         <input type="submit" value="Run">
                     </form>
                 </td>
                 <td>
                     <form action="monitoringTable" method="post">
-                        <input type="hidden" name="buttonStop" value="<%=data.getUrl()%>">
+                        <input type="hidden" name="buttonStop" value="<%=monitoringDataStorage.getUrl()%>">
                         <input type="submit" value="Stop">
                     </form>
                 </td>

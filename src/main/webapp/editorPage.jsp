@@ -19,7 +19,7 @@
                 <input type="text" name="maxSize" value="<%=monitoredURL.getMaxSize()%>"/> Max Size<Br>
                 <input type="hidden" name="url" value="<%=monitoredURL.getUrl()%>"/><Br>
                 <input type="submit" value="Submit">
-                <a href="initialDataTable"> Click to see data set</a>
+                <a href="initialDataTable"> Click to see monitoringDataStorage set</a>
             </form>
     </body>
 </html>

@@ -15,7 +15,7 @@
             <input type="text" name="maxSize"/> Max Size<Br>
             <input type="hidden" name="url"/><Br>
             <input type="submit" value="Submit">
-            <a href="initialDataTable"> Click to see data set</a>
+            <a href="initialDataTable"> Click to see monitoringDataStorage set</a>
         </form>
     </body>
 </html>

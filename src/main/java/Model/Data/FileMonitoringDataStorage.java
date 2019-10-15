@@ -4,7 +4,7 @@ import Model.MonitoredURL;
 
 import java.util.List;
 
-public class FileData extends Data{
+public class FileMonitoringDataStorage extends MonitoringDataStorage {
 
     @Override
     void init() {
