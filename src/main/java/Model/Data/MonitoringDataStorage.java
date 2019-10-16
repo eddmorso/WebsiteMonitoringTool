@@ -10,12 +10,6 @@ import java.util.List;
 
 public abstract class MonitoringDataStorage {
 
-    public MonitoringDataStorage(){
-        init();
-    }
-
-    abstract void init();
-
     public abstract MonitoredURL getMonitoredURL(String url);
 
     public abstract List<MonitoredURL> getMonitoredURL();

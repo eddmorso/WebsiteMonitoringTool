@@ -10,22 +10,22 @@ public class DatabaseMonitoringDataStorage extends MonitoringDataStorage {
     private final String USER = "test";
     private final String PASSWORD = "test";
     private Connection connection;
+    private static DatabaseMonitoringDataStorage databaseMonitoringDataStorage;
 
-//    public DatabaseMonitoringDataStorage(String url, String user, String pass){
-//        super();
-//        DATA_BASE_URL = url;
-//        USER = user;
-//        PASSWORD = pass;
-//    }
-
-    @Override
-    void init() {
+    private DatabaseMonitoringDataStorage(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(DATA_BASE_URL, USER, PASSWORD);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public static synchronized DatabaseMonitoringDataStorage getInstance(){
+        if (databaseMonitoringDataStorage == null){
+            databaseMonitoringDataStorage = new DatabaseMonitoringDataStorage();
+        }
+        return databaseMonitoringDataStorage;
     }
 
     @Override
@@ -161,7 +161,7 @@ public class DatabaseMonitoringDataStorage extends MonitoringDataStorage {
     @Override
     public void updateResponseCode(String targetUrl, int updatedResponseCode) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE urls SET Monitoring_time = ? WHERE URL = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE urls SET Response_code = ? WHERE URL = ?");
 
             preparedStatement.setInt(1, updatedResponseCode);
             preparedStatement.setString(2, targetUrl);
@@ -176,7 +176,7 @@ public class DatabaseMonitoringDataStorage extends MonitoringDataStorage {
     @Override
     public void updateMinSize(String targetUrl, int updateMinSize) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE urls SET Monitoring_time = ? WHERE URL = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE urls SET Min_size = ? WHERE URL = ?");
 
             preparedStatement.setInt(1, updateMinSize);
             preparedStatement.setString(2, targetUrl);
@@ -191,7 +191,7 @@ public class DatabaseMonitoringDataStorage extends MonitoringDataStorage {
     @Override
     public void updateMaxSize(String targetUrl, int updateMaxSize) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE urls SET Monitoring_time = ? WHERE URL = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE urls SET Max_size = ? WHERE URL = ?");
 
             preparedStatement.setInt(1, updateMaxSize);
             preparedStatement.setString(2, targetUrl);

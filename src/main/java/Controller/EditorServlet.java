@@ -15,7 +15,7 @@ public class EditorServlet extends HttpServlet {
     private MonitoringDataStorage monitoringDataStorage;
 
     public EditorServlet(){
-        monitoringDataStorage = new DatabaseMonitoringDataStorage();
+        monitoringDataStorage = DatabaseMonitoringDataStorage.getInstance();
     }
 
     @Override

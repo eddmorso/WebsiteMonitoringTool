@@ -15,7 +15,7 @@ public class RemoverServlet extends HttpServlet {
     private MonitoringDataStorage monitoringDataStorage;
 
     public RemoverServlet(){
-        monitoringDataStorage = new DatabaseMonitoringDataStorage();
+        monitoringDataStorage = DatabaseMonitoringDataStorage.getInstance();
     }
 
     @Override

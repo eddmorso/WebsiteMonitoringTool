@@ -16,7 +16,7 @@ public class AdderServlet extends HttpServlet {
     private MonitoringDataStorage monitoringDataStorage;
 
     public AdderServlet(){
-        monitoringDataStorage = new DatabaseMonitoringDataStorage();
+        monitoringDataStorage = DatabaseMonitoringDataStorage.getInstance();
     }
 
     @Override

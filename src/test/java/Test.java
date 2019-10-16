@@ -8,7 +8,7 @@ public class Test {
 
     @BeforeClass
     public static void prepare(){
-        databaseMonitoringDataStorage = new DatabaseMonitoringDataStorage();
+        databaseMonitoringDataStorage = DatabaseMonitoringDataStorage.getInstance();
     }
 
     @org.junit.Test

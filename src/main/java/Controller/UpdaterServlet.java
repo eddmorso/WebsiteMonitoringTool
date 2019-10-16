@@ -15,7 +15,7 @@ public class UpdaterServlet extends HttpServlet {
     private MonitoringDataStorage monitoringDataStorage;
 
     public UpdaterServlet(){
-        monitoringDataStorage = new DatabaseMonitoringDataStorage();
+        monitoringDataStorage = DatabaseMonitoringDataStorage.getInstance();
     }
 
     @Override
@@ -57,27 +57,27 @@ public class UpdaterServlet extends HttpServlet {
         requestDispatcher.forward(req, resp);
     }
 
-    private void updateMinResponseTime(String targetUrl, int updatedMinResponseTime){
+    private synchronized void updateMinResponseTime(String targetUrl, int updatedMinResponseTime){
         monitoringDataStorage.updateMinResponseTime(targetUrl, updatedMinResponseTime);
     }
 
-    private void updateMaxResponseTime(String targetUrl, int updatedMaxResponseTime){
+    private synchronized void updateMaxResponseTime(String targetUrl, int updatedMaxResponseTime){
         monitoringDataStorage.updateMaxResponseTime(targetUrl, updatedMaxResponseTime);
     }
 
-    private void updateMonitoringTime(String targetUrl, int updateMonitoringTime){
+    private synchronized void updateMonitoringTime(String targetUrl, int updateMonitoringTime){
         monitoringDataStorage.updateMonitoringTime(targetUrl, updateMonitoringTime);
     }
 
-    private void updateResponseCode(String targetUrl, int updatedResponseCode){
+    private synchronized void updateResponseCode(String targetUrl, int updatedResponseCode){
         monitoringDataStorage.updateResponseCode(targetUrl, updatedResponseCode);
     }
 
-    private void updateMinSize(String targetUrl, int updateMinSize){
+    private synchronized void updateMinSize(String targetUrl, int updateMinSize){
         monitoringDataStorage.updateMinSize(targetUrl, updateMinSize);
     }
 
-    private void updateMaxSize(String targetUrl, int updateMaxSize){
-        monitoringDataStorage.updateMinSize(targetUrl, updateMaxSize);
+    private synchronized void updateMaxSize(String targetUrl, int updateMaxSize){
+        monitoringDataStorage.updateMaxSize(targetUrl, updateMaxSize);
     }
 }

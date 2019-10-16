@@ -8,30 +8,24 @@
   <component name="ChangeListManager">
     <list default="true" id="40977b20-37a8-4837-9e6b-891c8c35b03a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AdderServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AdderServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/InitialDataServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/InitialDataServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MonitoredDataServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MonitoredDataServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Monitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Monitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RemoverServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RemoverServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/UpdaterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/UpdaterServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/DatabaseMonitoringDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/DatabaseMonitoringDataStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/FileMonitoringDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/FileMonitoringDataStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/MonitoringDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/MonitoringDataStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/AdderServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/AdderServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/EditorServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/EditorServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/InitialDataServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/InitialDataServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/MonitoredDataServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/MonitoredDataServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/RemoverServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/RemoverServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/UpdaterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Controller/UpdaterServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Model/Monitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Model/Monitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Model/MonitoredURL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Model/MonitoredURL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Model/MonitoringResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Model/MonitoringResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/WEB-INF/classes/Model/MonitorsLit.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/WebsiteMonitoringTool/monitoringTable.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebsiteMonitoringTool/monitoringTable.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/AdderServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/AdderServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/EditorServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/EditorServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/InitialDataServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/InitialDataServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Controller/MonitoredDataServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/MonitoredDataServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/RemoverServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/RemoverServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/UpdaterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/UpdaterServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model/Monitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Monitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/MonitoredURL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MonitoredURL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model/MonitoringResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MonitoringResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/MonitorsLit.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -61,28 +55,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Monitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-476">
-              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1392#1393#0" expanded="true" />
-                <element signature="e#1444#1445#0" expanded="true" />
-                <element signature="e#2040#2041#0" expanded="true" />
-                <element signature="e#2081#2082#0" expanded="true" />
-                <element signature="e#2296#2297#0" expanded="true" />
-                <element signature="e#2346#2347#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controller/RemoverServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="29" column="91" selection-start-line="29" selection-start-column="91" selection-end-line="29" selection-end-column="91" />
+            <state relative-caret-position="85">
+              <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#503#504#0" expanded="true" />
@@ -93,82 +69,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/MonitoredDataServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/UpdaterServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="28" column="128" selection-start-line="28" selection-start-column="128" selection-end-line="28" selection-end-column="128" />
+            <state relative-caret-position="301">
+              <caret line="80" column="70" lean-forward="true" selection-start-line="80" selection-start-column="70" selection-end-line="80" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/MonitorsList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-              <folding>
-                <element signature="e#263#264#0" expanded="true" />
-                <element signature="e#315#316#0" expanded="true" />
-                <element signature="e#342#343#0" expanded="true" />
-                <element signature="e#370#371#0" expanded="true" />
-                <element signature="e#442#443#0" expanded="true" />
-                <element signature="e#479#480#0" expanded="true" />
-                <element signature="e#538#539#0" expanded="true" />
-                <element signature="e#560#561#0" expanded="true" />
-                <element signature="e#633#634#0" expanded="true" />
-                <element signature="e#662#663#0" expanded="true" />
-                <element signature="e#751#752#0" expanded="true" />
-                <element signature="e#780#781#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
-                <element signature="e#576#577#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/InitialDataServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="32" column="114" selection-start-line="32" selection-start-column="114" selection-end-line="32" selection-end-column="114" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#534#535#0" expanded="true" />
-                <element signature="e#608#609#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/MonitoredURL.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
-              <folding>
-                <element signature="method#setMonitoringTimeSeconds#0;class#MonitoredURL#0" />
-                <element signature="e#1533#1534#0" expanded="true" />
-                <element signature="e#2155#2156#0" expanded="true" />
-                <element signature="e#2190#2191#0" expanded="true" />
-                <element signature="e#2247#2248#0" expanded="true" />
-                <element signature="e#2297#2298#0" expanded="true" />
-                <element signature="e#2335#2336#0" expanded="true" />
-                <element signature="e#2371#2372#0" expanded="true" />
+                <element signature="e#503#504#0" expanded="true" />
+                <element signature="e#578#579#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -177,22 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/DatabaseMonitoringDataStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/MonitoringResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
-              <folding>
-                <element signature="e#721#722#0" expanded="true" />
-                <element signature="e#756#757#0" expanded="true" />
-                <element signature="e#875#876#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="188">
+              <caret line="193" column="103" selection-start-line="193" selection-start-column="103" selection-end-line="193" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -225,7 +119,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Controller/MonitoredDataSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/Status.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/StatusMessage.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/table.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Data/Database.java" />
@@ -239,18 +132,22 @@
         <option value="$PROJECT_DIR$/src/main/java/Model/StatusMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Model.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/MonitoringResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/MonitorsLit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/AdderServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/RemoverServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/UpdaterServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/MonitorsList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/InitialDataServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/MonitoredURL.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/monitoringTable.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/MonitoringResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Monitor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/AdderServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/MonitoredDataServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/RemoverServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/MonitoringDataStorage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/FileMonitoringDataStorage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/InitialDataServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/DatabaseMonitoringDataStorage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/UpdaterServlet.java" />
       </list>
     </option>
   </component>
@@ -582,7 +479,7 @@
       <workItem from="1571050649464" duration="12966000" />
       <workItem from="1571132963702" duration="6312000" />
       <workItem from="1571143968955" duration="11717000" />
-      <workItem from="1571210857421" duration="7091000" />
+      <workItem from="1571210857421" duration="10333000" />
     </task>
     <task id="LOCAL-00001" summary="setting status">
       <created>1570962749621</created>
@@ -682,11 +579,25 @@
       <option name="project" value="LOCAL" />
       <updated>1571220461068</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix multithreading">
+      <created>1571220983607</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1571220983607</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fix monitoring time">
+      <created>1571222092209</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1571222092209</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110162000" />
+    <option name="totallyTimeSpent" value="113404000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -801,14 +712,15 @@
     <MESSAGE value="delete Main" />
     <MESSAGE value="done refactoring" />
     <MESSAGE value="fix multithreading" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix multithreading" />
+    <MESSAGE value="fix monitoring time" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix monitoring time" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Controller/MonitoredDataServlet.java</url>
-          <line>102</line>
+          <line>99</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -867,36 +779,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/newURL.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-535">
-          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#245#246#0" expanded="true" />
-            <element signature="e#286#287#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/editorPage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="21" column="69" lean-forward="true" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/initialDataTable.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="42" column="25" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -919,85 +805,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/MonitoringDataStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#260#261#0" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/FileMonitoringDataStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#251#252#0" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#343#344#0" expanded="true" />
-            <element signature="e#370#371#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/java/lang/Iterable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-719">
           <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/AdderServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="57" column="82" selection-start-line="57" selection-start-column="82" selection-end-line="57" selection-end-column="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#597#598#0" expanded="true" />
-            <element signature="e#2719#2720#0" expanded="true" />
-            <element signature="e#2786#2787#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/UpdaterServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#578#579#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#576#577#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/InitialDataServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="32" column="114" selection-start-line="32" selection-start-column="114" selection-end-line="32" selection-end-column="114" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1029,18 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/MonitoringResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#721#722#0" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#875#876#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.16/mysql-connector-java-8.0.16.jar!/com/mysql/cj/jdbc/ConnectionImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -1056,26 +855,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/DatabaseMonitoringDataStorage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/monitoringTable.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="188">
+          <caret line="43" column="63" selection-start-line="43" selection-start-column="63" selection-end-line="43" selection-end-column="63" />
+          <folding>
+            <marker date="1571221914512" expanded="true" signature="274:756" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/monitoringTable.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Monitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+        <state relative-caret-position="527">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
           <folding>
-            <marker date="1571220057182" expanded="true" signature="274:756" ph="..." />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1392#1393#0" expanded="true" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#2296#2297#0" expanded="true" />
+            <element signature="e#2346#2347#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/MonitoredURL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
+        <state relative-caret-position="561">
           <caret line="53" selection-start-line="53" selection-end-line="53" />
           <folding>
             <element signature="method#setMonitoringTimeSeconds#0;class#MonitoredURL#0" />
@@ -1090,10 +896,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/MonitoringResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+          <folding>
+            <element signature="e#721#722#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
+            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/AdderServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="18" column="75" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/MonitoredDataServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Controller/RemoverServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="29" column="91" selection-start-line="29" selection-start-column="91" selection-end-line="29" selection-end-column="91" />
+        <state relative-caret-position="85">
+          <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#503#504#0" expanded="true" />
@@ -1102,28 +945,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Monitor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/FileMonitoringDataStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-476">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        <state relative-caret-position="102">
+          <caret line="6" column="70" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1444#1445#0" expanded="true" />
-            <element signature="e#2040#2041#0" expanded="true" />
-            <element signature="e#2081#2082#0" expanded="true" />
-            <element signature="e#2296#2297#0" expanded="true" />
-            <element signature="e#2346#2347#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/MonitoredDataServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="28" column="128" selection-start-line="28" selection-start-column="128" selection-end-line="28" selection-end-column="128" />
+        <state relative-caret-position="170">
+          <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#341#342#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#576#577#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/editorPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/MonitoringDataStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/initialDataTable.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="10" column="106" lean-forward="true" selection-start-line="10" selection-start-column="106" selection-end-line="10" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/InitialDataServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/DatabaseMonitoringDataStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="193" column="103" selection-start-line="193" selection-start-column="103" selection-end-line="193" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/UpdaterServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="80" column="70" lean-forward="true" selection-start-line="80" selection-start-column="70" selection-end-line="80" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#578#579#0" expanded="true" />
           </folding>
         </state>
       </provider>

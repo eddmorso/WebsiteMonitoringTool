@@ -23,7 +23,7 @@ public class MonitoredDataServlet extends HttpServlet {
 
     public MonitoredDataServlet(){
         monitors = new MonitorsList();
-        monitoringDataStorage = new DatabaseMonitoringDataStorage();
+        monitoringDataStorage = DatabaseMonitoringDataStorage.getInstance();
         monitoringDataStorage.getMonitoredURL().forEach(monitoredURL -> monitors.add(new Monitor(monitoredURL)));
     }
 

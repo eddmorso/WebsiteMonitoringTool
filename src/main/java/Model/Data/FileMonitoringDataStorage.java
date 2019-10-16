@@ -7,11 +7,6 @@ import java.util.List;
 public class FileMonitoringDataStorage extends MonitoringDataStorage {
 
     @Override
-    void init() {
-
-    }
-
-    @Override
     public MonitoredURL getMonitoredURL(String url) {
         return null;
     }
