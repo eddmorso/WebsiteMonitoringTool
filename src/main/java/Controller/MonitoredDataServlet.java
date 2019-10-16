@@ -26,6 +26,7 @@ public class MonitoredDataServlet extends HttpServlet {
         monitors = new MonitorsList();
         monitoringDataStorage = new DatabaseMonitoringDataStorage();
         beginningTime = System.currentTimeMillis();
+        monitoringDataStorage.getMonitoredURL().forEach(monitoredURL -> monitors.add(new Monitor(monitoredURL, beginningTime)));
     }
 
     @Override
@@ -34,16 +35,7 @@ public class MonitoredDataServlet extends HttpServlet {
         boolean isCritical = false;
         List<MonitoringResult> gatheredData = new ArrayList<>();
 
-        monitoringDataStorage.getMonitoredURL().forEach(monitoredURL -> monitors.add(new Monitor(monitoredURL, beginningTime)));
-        monitors.forEach(monitor -> {
-            monitor.start();
-            try {
-                monitor.join();
-            } catch (InterruptedException e){
-                e.printStackTrace();
-            }
-        });
-
+        monitors.forEach(Monitor::updateData);
         monitors.forEach(monitor -> gatheredData.add(monitor.getMonitoringResult()));
 
         for (MonitoringResult data : gatheredData) {

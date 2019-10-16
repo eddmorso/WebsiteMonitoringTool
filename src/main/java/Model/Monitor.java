@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Monitor extends Thread {
+public class Monitor {
     private MonitoredURL monitoredURL;
     private MonitoringResult monitoringResult;
     private HttpURLConnection connection;
@@ -19,17 +19,30 @@ public class Monitor extends Thread {
         this.beginningTime = beginningTime;
     }
 
-    private void updateData() {
-        long monitoringLeftTime = getMonitoringTimeLeft();
+    public void updateData() {
+        Thread monitorThread = new Thread(()-> {
+            try {
+                connection = (HttpURLConnection) new URL(monitoredURL.getUrl()).openConnection();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            long monitoringLeftTime = getMonitoringTimeLeft();
 
-        if (monitoredURL.isStopped() || monitoringLeftTime < 0) {
-            return;
+            if (monitoredURL.isStopped() || monitoringLeftTime < 0) {
+                return;
+            }
+            monitoringResult = new MonitoringResult(monitoredURL.getUrl(),
+                    getCurrentResponseTime(),
+                    getCurrentResponseCode(),
+                    getCurrentSize(),
+                    monitoringLeftTime);
+        });
+        monitorThread.start();
+        try {
+            monitorThread.join();
+        } catch (InterruptedException e){
+            e.printStackTrace();
         }
-        monitoringResult = new MonitoringResult(monitoredURL.getUrl(),
-                getCurrentResponseTime(),
-                getCurrentResponseCode(),
-                getCurrentSize(),
-                monitoringLeftTime);
     }
 
     private long getCurrentResponseTime() {
@@ -79,21 +92,6 @@ public class Monitor extends Thread {
 
     public void setBeginningTime(long beginningTime) {
         this.beginningTime = beginningTime;
-    }
-
-    @Override
-    public synchronized void start() {
-        try {
-            connection = (HttpURLConnection) new URL(monitoredURL.getUrl()).openConnection();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        super.start();
-    }
-
-    @Override
-    public void run() {
-        updateData();
     }
 
     public MonitoredURL getMonitoredURL() {
