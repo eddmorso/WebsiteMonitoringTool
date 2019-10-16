@@ -9,6 +9,7 @@ public class Monitor {
     private MonitoringResult monitoringResult;
     private HttpURLConnection connection;
     private long beginningTime;
+    private Thread monitorThread;
 
     public Monitor(MonitoredURL monitoredURL) {
         if (monitoredURL != null) {
@@ -19,8 +20,8 @@ public class Monitor {
         beginningTime = System.currentTimeMillis();
     }
 
-    public void updateData() {
-        Thread monitorThread = new Thread(()-> {
+    public void start() {
+         monitorThread = new Thread(()-> {
             try {
                 connection = (HttpURLConnection) new URL(monitoredURL.getUrl()).openConnection();
             } catch (IOException e) {
@@ -104,7 +105,11 @@ public class Monitor {
         return monitoredURL;
     }
 
-    public MonitoringResult getMonitoringResult() {
+    public MonitoringResult getMonitoringResult() {try {
+        monitorThread.join();
+    } catch (InterruptedException e){
+        e.printStackTrace();
+    }
         return monitoringResult;
     }
 }

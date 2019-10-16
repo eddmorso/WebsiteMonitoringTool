@@ -33,7 +33,7 @@ public class MonitoredDataServlet extends HttpServlet {
         boolean isCritical = false;
         List<MonitoringResult> gatheredData = new ArrayList<>();
 
-        monitors.forEach(Monitor::updateData);
+        monitors.forEach(Monitor::start);
         monitors.forEach(monitor -> gatheredData.add(monitor.getMonitoringResult()));
 
         for (MonitoringResult data : gatheredData) {
