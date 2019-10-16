@@ -88,7 +88,6 @@ public class MonitoredURL{
 
     public void setStopped(boolean stopped) {
         isStopped = stopped;
-
     }
 
     public void setBeginningTime(long beginningTime) {

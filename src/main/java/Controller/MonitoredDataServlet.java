@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Data.DatabaseMonitoringDataStorage;
 import Model.*;
+import Model.Data.MonitoringDataStorage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,27 +10,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MonitoredDataServlet extends HttpServlet {
-    private Monitor monitor;
+    private MonitorsList monitors;
+    private MonitoringDataStorage monitoringDataStorage;
+    private long beginningTime;
     private final String COULDNT_GET_SIZE_MSG = "Couldn't get page size;";
     private final String UNEXPECTED_TIME_MSG = "Unexpected response time;";
     private final String UNEXPECTED_RESPONSE_CODE_MSG = "Unexpected response code;";
     private final String UNEXPECTED_SIZE = "Unexpected size;";
 
     public MonitoredDataServlet(){
-        monitor = new Monitor(new DatabaseMonitoringDataStorage());
+        monitors = new MonitorsList();
+        monitoringDataStorage = new DatabaseMonitoringDataStorage();
+        beginningTime = System.currentTimeMillis();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        synchronized (this) {
-            boolean isWarning = false;
-            boolean isCritical = false;
-            List<MonitoringResult> gatheredData = monitor.updateData();
+        boolean isWarning = false;
+        boolean isCritical = false;
+        List<MonitoringResult> gatheredData = new ArrayList<>();
 
-            for (MonitoringResult data : gatheredData) {
+        monitoringDataStorage.getMonitoredURL().forEach(monitoredURL -> monitors.add(new Monitor(monitoredURL, beginningTime)));
+        monitors.forEach(monitor -> {
+            monitor.start();
+            try {
+                monitor.join();
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        });
+
+        monitors.forEach(monitor -> gatheredData.add(monitor.getMonitoringResult()));
+
+        for (MonitoringResult data : gatheredData) {
+            if (data != null) {
                 StatusMessage statusMessage = new StatusMessage(Status.OK, "");
                 Status statusCode = checkResponseCode(data);
                 Status statusTime = checkResponseTime(data);
@@ -46,7 +64,7 @@ public class MonitoredDataServlet extends HttpServlet {
                 }
 
                 if (!statusSize.equals(Status.OK)) {
-                    if (statusSize.equals(Status.WARNING)){
+                    if (statusSize.equals(Status.WARNING)) {
                         statusMessage.changeStatus(statusSize);
                         statusMessage.addMessage(COULDNT_GET_SIZE_MSG);
                     } else {
@@ -56,20 +74,21 @@ public class MonitoredDataServlet extends HttpServlet {
                 }
                 data.setStatus(statusMessage);
 
-                if (statusMessage.getStatus().equals(Status.WARNING)){
+                if (statusMessage.getStatus().equals(Status.WARNING)) {
                     isWarning = true;
-                } else if (statusMessage.getStatus().equals(Status.CRITICAL)){
+                } else if (statusMessage.getStatus().equals(Status.CRITICAL)) {
                     isCritical = true;
                 }
             }
-
-            req.setAttribute("isWarning", isWarning);
-            req.setAttribute("isCritical", isCritical);
-            req.setAttribute("gatheredData", gatheredData);
-
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("monitoringTable.jsp");
-            requestDispatcher.forward(req, resp);
         }
+
+        req.setAttribute("isWarning", isWarning);
+        req.setAttribute("isCritical", isCritical);
+        req.setAttribute("gatheredData", gatheredData);
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("monitoringTable.jsp");
+        requestDispatcher.forward(req, resp);
+
     }
 
     @Override
@@ -78,30 +97,28 @@ public class MonitoredDataServlet extends HttpServlet {
         String urlStop = req.getParameter("buttonStop");
 
         if (urlRun != null) {
-           monitor.startMonitoredURL(urlRun);
+           monitors.get(new MonitoredURL(urlRun)).startMonitoredURL();
            doGet(req, resp);
         }
 
         if (urlStop != null){
-            monitor.stopMonitoredURL(urlStop);
+            monitors.get(new MonitoredURL(urlStop)).stopMonitoredURL();
             doGet(req, resp);
         }
     }
 
-    public Status checkResponseCode(MonitoringResult data){
-        synchronized (this) {
-            MonitoredURL monitoredURL = monitor.getMonitoredUrl(data.getUrl());
+    private Status checkResponseCode(MonitoringResult data) {
+        MonitoredURL monitoredURL = monitoringDataStorage.getMonitoredURL(data.getUrl());
 
-            if (monitoredURL.getResponseCode() == data.getResponseCode()) {
-                return Status.OK;
-            }
+        if (monitoredURL.getResponseCode() == data.getResponseCode()) {
+            return Status.OK;
         }
         return Status.CRITICAL;
     }
 
-    public Status checkResponseTime(MonitoringResult data){
+    private Status checkResponseTime(MonitoringResult data){
         synchronized (this) {
-            MonitoredURL monitoredURL = monitor.getMonitoredUrl(data.getUrl());
+            MonitoredURL monitoredURL = monitoringDataStorage.getMonitoredURL(data.getUrl());
             long currentTime = data.getResponseTime();
             long maxTime = monitoredURL.getMaxResponseTime();
             long middle = maxTime / 2;
@@ -115,9 +132,9 @@ public class MonitoredDataServlet extends HttpServlet {
         return Status.CRITICAL;
     }
 
-    public Status checkSize(MonitoringResult data){
+    private Status checkSize(MonitoringResult data){
         synchronized (this) {
-            MonitoredURL monitoredURL = monitor.getMonitoredUrl(data.getUrl());
+            MonitoredURL monitoredURL = monitoringDataStorage.getMonitoredURL(data.getUrl());
             int minSize = monitoredURL.getMinSize();
             int maxSize = monitoredURL.getMaxSize();
             int size = data.getPageSize();

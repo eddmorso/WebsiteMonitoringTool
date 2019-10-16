@@ -2,6 +2,7 @@ package Controller;
 
 import Model.*;
 import Model.Data.DatabaseMonitoringDataStorage;
+import Model.Data.MonitoringDataStorage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,16 +13,15 @@ import java.io.IOException;
 import java.util.List;
 
 public class InitialDataServlet extends HttpServlet {
-    private Monitor monitor;
+    private MonitoringDataStorage monitoringDataStorage;
 
     public InitialDataServlet(){
-        this.monitor = new Monitor(new DatabaseMonitoringDataStorage());
+       monitoringDataStorage = new DatabaseMonitoringDataStorage();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        monitor.updateMonitoredURLS();
-        List<MonitoredURL> monitoredURLS = monitor.getMonitoredUrl();
+        List<MonitoredURL> monitoredURLS = monitoringDataStorage.getMonitoredURL();
 
         req.setAttribute("monitoredURLS", monitoredURLS);
 
@@ -31,7 +31,6 @@ public class InitialDataServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         doGet(req, resp);
     }
 }

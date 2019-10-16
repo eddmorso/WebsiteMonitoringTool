@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Data.DatabaseMonitoringDataStorage;
 import Model.*;
+import Model.Data.MonitoringDataStorage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,10 +13,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class AdderServlet extends HttpServlet {
-    private Monitor monitor;
+    private MonitoringDataStorage monitoringDataStorage;
 
     public AdderServlet(){
-        monitor = new Monitor(new DatabaseMonitoringDataStorage());
+        monitoringDataStorage = new DatabaseMonitoringDataStorage();
     }
 
     @Override
@@ -30,7 +31,7 @@ public class AdderServlet extends HttpServlet {
             int minSize = Integer.valueOf(req.getParameter("minSize"));
             int maxSize = Integer.valueOf(req.getParameter("maxSize"));
 
-            monitor.addMonitoredURL(new MonitoredURL(url, minTime, maxTime, monitoringTimeSeconds, responseCode, minSize, maxSize));
+            addMonitoredURL(new MonitoredURL(url, minTime, maxTime, monitoringTimeSeconds, responseCode, minSize, maxSize));
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("initialDataTable");
             requestDispatcher.forward(req, resp);
@@ -54,7 +55,7 @@ public class AdderServlet extends HttpServlet {
     }
 
     public boolean isExistedUrl(String url){
-        List<MonitoredURL> monitoredURLS = monitor.getMonitoredUrl();
+        List<MonitoredURL> monitoredURLS = monitoringDataStorage.getMonitoredURL();
 
         for (MonitoredURL monitoredURL : monitoredURLS){
             if (monitoredURL.getUrl().equals(url)){
@@ -63,4 +64,9 @@ public class AdderServlet extends HttpServlet {
         }
         return false;
     }
+
+    private void addMonitoredURL(MonitoredURL monitoredURL){
+        monitoringDataStorage.addMonitoredURL(monitoredURL);
+    }
+
 }
