@@ -10,13 +10,13 @@ public class Monitor {
     private HttpURLConnection connection;
     private long beginningTime;
 
-    public Monitor(MonitoredURL monitoredURL, long beginningTime) {
+    public Monitor(MonitoredURL monitoredURL) {
         if (monitoredURL != null) {
             this.monitoredURL = monitoredURL;
         } else {
             throw new RuntimeException("No monitored url to update");
         }
-        this.beginningTime = beginningTime;
+        beginningTime = System.currentTimeMillis();
     }
 
     public void updateData() {
@@ -28,7 +28,12 @@ public class Monitor {
             }
             long monitoringLeftTime = getMonitoringTimeLeft();
 
-            if (monitoredURL.isStopped() || monitoringLeftTime < 0) {
+            if (monitoredURL.isStopped()) {
+                return;
+            }
+
+            if (monitoringLeftTime < 0){
+                monitoringResult.setMonitoringTimeLeftToZero();
                 return;
             }
             monitoringResult = new MonitoringResult(monitoredURL.getUrl(),
@@ -83,6 +88,7 @@ public class Monitor {
 
     public void stopMonitoredURL(){
         monitoredURL.setStopped(true);
+        monitoredURL.setMonitoringTimeSeconds((int) monitoringResult.getMonitoringTimeLeft() / 1000);
     }
 
     public void startMonitoredURL() {

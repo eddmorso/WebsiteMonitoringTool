@@ -16,7 +16,6 @@ import java.util.List;
 public class MonitoredDataServlet extends HttpServlet {
     private MonitorsList monitors;
     private MonitoringDataStorage monitoringDataStorage;
-    private long beginningTime;
     private final String COULDNT_GET_SIZE_MSG = "Couldn't get page size;";
     private final String UNEXPECTED_TIME_MSG = "Unexpected response time;";
     private final String UNEXPECTED_RESPONSE_CODE_MSG = "Unexpected response code;";
@@ -25,8 +24,7 @@ public class MonitoredDataServlet extends HttpServlet {
     public MonitoredDataServlet(){
         monitors = new MonitorsList();
         monitoringDataStorage = new DatabaseMonitoringDataStorage();
-        beginningTime = System.currentTimeMillis();
-        monitoringDataStorage.getMonitoredURL().forEach(monitoredURL -> monitors.add(new Monitor(monitoredURL, beginningTime)));
+        monitoringDataStorage.getMonitoredURL().forEach(monitoredURL -> monitors.add(new Monitor(monitoredURL)));
     }
 
     @Override
@@ -39,39 +37,38 @@ public class MonitoredDataServlet extends HttpServlet {
         monitors.forEach(monitor -> gatheredData.add(monitor.getMonitoringResult()));
 
         for (MonitoringResult data : gatheredData) {
-            if (data != null) {
-                StatusMessage statusMessage = new StatusMessage(Status.OK, "");
-                Status statusCode = checkResponseCode(data);
-                Status statusTime = checkResponseTime(data);
-                Status statusSize = checkSize(data);
+            StatusMessage statusMessage = new StatusMessage(Status.OK, "");
+            Status statusCode = checkResponseCode(data);
+            Status statusTime = checkResponseTime(data);
+            Status statusSize = checkSize(data);
 
-                if (!statusCode.equals(Status.OK)) {
-                    statusMessage.changeStatus(statusCode);
-                    statusMessage.addMessage(UNEXPECTED_RESPONSE_CODE_MSG);
-                }
+            if (!statusCode.equals(Status.OK)) {
+                statusMessage.changeStatus(statusCode);
+                statusMessage.addMessage(UNEXPECTED_RESPONSE_CODE_MSG);
+            }
 
-                if (!statusTime.equals(Status.OK)) {
-                    statusMessage.changeStatus(statusTime);
-                    statusMessage.addMessage(UNEXPECTED_TIME_MSG);
-                }
+            if (!statusTime.equals(Status.OK)) {
+                statusMessage.changeStatus(statusTime);
+                statusMessage.addMessage(UNEXPECTED_TIME_MSG);
+            }
 
-                if (!statusSize.equals(Status.OK)) {
-                    if (statusSize.equals(Status.WARNING)) {
-                        statusMessage.changeStatus(statusSize);
-                        statusMessage.addMessage(COULDNT_GET_SIZE_MSG);
-                    } else {
-                        statusMessage.changeStatus(statusSize);
-                        statusMessage.addMessage(UNEXPECTED_SIZE);
-                    }
-                }
-                data.setStatus(statusMessage);
-
-                if (statusMessage.getStatus().equals(Status.WARNING)) {
-                    isWarning = true;
-                } else if (statusMessage.getStatus().equals(Status.CRITICAL)) {
-                    isCritical = true;
+            if (!statusSize.equals(Status.OK)) {
+                if (statusSize.equals(Status.WARNING)) {
+                    statusMessage.changeStatus(statusSize);
+                    statusMessage.addMessage(COULDNT_GET_SIZE_MSG);
+                } else {
+                    statusMessage.changeStatus(statusSize);
+                    statusMessage.addMessage(UNEXPECTED_SIZE);
                 }
             }
+            data.setStatus(statusMessage);
+
+            if (statusMessage.getStatus().equals(Status.WARNING)) {
+                isWarning = true;
+            } else if (statusMessage.getStatus().equals(Status.CRITICAL)) {
+                isCritical = true;
+            }
+
         }
 
         req.setAttribute("isWarning", isWarning);

@@ -42,7 +42,6 @@
             %>
             <%
                 for (MonitoringResult data : monitoringResult){
-                    if (data != null){
             %>
             <tr>
                 <td><%=data.getUrl()%></td>
@@ -65,7 +64,6 @@
                 </td>
             </tr>
             <%
-                    }
                 }
             %>
         </tbody>

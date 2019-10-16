@@ -36,6 +36,10 @@ public class MonitoringResult {
         return url;
     }
 
+    public void setMonitoringTimeLeftToZero() {
+        this.monitoringTimeLeft = 0;
+    }
+
     public long getMonitoringTimeLeft() {
         return monitoringTimeLeft;
     }
